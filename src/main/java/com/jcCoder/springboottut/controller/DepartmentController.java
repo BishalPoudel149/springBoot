@@ -1,6 +1,7 @@
 package com.jcCoder.springboottut.controller;
 
 import com.jcCoder.springboottut.entity.Department;
+import com.jcCoder.springboottut.error.DepartmentNotFoundException;
 import com.jcCoder.springboottut.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -29,7 +30,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/{id}")
-    public Department fetchById(@PathVariable("id") Long id) {
+    public Department fetchById(@PathVariable("id") Long id) throws DepartmentNotFoundException {
         return departmentService.fetchByIdService(id);
     }
 
