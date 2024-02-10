@@ -1,6 +1,7 @@
 package com.jcCoder.springboottut.service;
 
 import com.jcCoder.springboottut.entity.Department;
+import com.jcCoder.springboottut.error.DepartmentNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface DepartmentService {
 
     public Department getAllDepartmentName(String departmentName);
 
-    public Department fetchByIdService(Long id);
+    public Department fetchByIdService(Long id) throws DepartmentNotFoundException;
 
     public List<Department> fetAllByAddressService(String address);
 
