@@ -34,7 +34,7 @@ public class Department {
     private String departmentCode;
 
     @Email(message = "Invalid Email Address , Please Enter a valid mail")
-    private String emailAddress;
+    private String departmentEmailAddress;
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "hod", referencedColumnName = "id")

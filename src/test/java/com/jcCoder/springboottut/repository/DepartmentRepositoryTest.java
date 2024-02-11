@@ -1,6 +1,7 @@
 package com.jcCoder.springboottut.repository;
 
 import com.jcCoder.springboottut.entity.Department;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,10 +22,13 @@ class DepartmentRepositoryTest {
 
     @BeforeEach
     void setUp() {
+
+        //Arrange
         Department department = Department.builder()
                 .departmentName("Computer Engineering")
                 .departmentAddress("London")
                 .departmentCode("CS-IJ2")
+                .departmentEmailAddress("hodcu@gmail.com")
                 .build();
 
         entityManager.persist(department);
@@ -32,15 +36,35 @@ class DepartmentRepositoryTest {
      @Test
      @DisplayName("Confirming Department ID getID  if created ")
         public void DepartmentId_TestIfCreated(){
+
+        //Act
             Department department1=departmentRepository.findById(1L).get();
 
+            //Assert
             assertEquals(department1.getDepartmentName(),"Computer Engineering");
         }
 
+        @Test
+        @DisplayName("Save Department Using JPARespository")
+        public void DepartmentRepository_SaveAll_ReturnDepartment(){
 
+              //Arrange
+            Department department = Department.builder()
+                    .departmentName("IT Department")
+                    .departmentAddress("KTM")
+                    .departmentCode("IT-23")
+                    .build();
 
+            Department savedDepartment=departmentRepository.save(department);
 
+            // Act
+            Assertions.assertNotNull(savedDepartment);
 
+            assertEquals("KTM",savedDepartment.getDepartmentAddress());
+
+            // Assert
+
+        }
 
 
 }
