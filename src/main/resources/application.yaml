@@ -17,7 +17,7 @@ spring:
           auth: 'true'
     host: smtp.gmail.com
     username: 'bishalpoudel563@gmail.com'
-    password: 'hbgauawypmcbpwrh'
+    password: 'ngyu ccas teed nijw'
     port: '587'
 server:
   port: '8084'
