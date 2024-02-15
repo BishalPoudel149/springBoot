@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/db_depart
+    password: SapMySql@23Jacky
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  mail:
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          auth: 'true'
+    host: smtp.gmail.com
+    username: 'bishalpoudel563@gmail.com'
+    password: 'ngyu ccas teed nijw'
+    port: '587'
+server:
+  port: '8084'
