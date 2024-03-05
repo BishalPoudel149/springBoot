@@ -65,6 +65,24 @@ class DepartmentRepositoryTest {
             // Assert
 
         }
+         // For evaluating the Exception
+        // assertThrows ( Exception.Class, Lamda Function)
+
+    @Test
+    @DisplayName("Find Department Name Repository Test")
+     public void FindByDepartmentName_Test(){
+        Department department=Department.builder()
+                .departmentName("Business")
+                .departmentAddress("London")
+                .build();
+
+        Department savedDepartment=departmentRepository.save(department);
+
+        Department getDepartmentBYName = departmentRepository.findByDepartmentNameIgnoreCase(savedDepartment.getDepartmentName());
+
+        assertEquals(getDepartmentBYName.getDepartmentName(),"Business");
+
+     }
 
 
 }
