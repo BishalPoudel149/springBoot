@@ -88,8 +88,7 @@ class DepartmentControllerTest {
     @Test
     @DisplayName("Fetch the Department Details by Id")
    public void fetchByIdTest() throws Exception {
-        mockMvc.perform(get("/department/1")
-                .contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/department/1"))
                 .andExpect(status().isOk());
     }
 }

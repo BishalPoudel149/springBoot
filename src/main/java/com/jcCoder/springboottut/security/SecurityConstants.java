@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class SecurityConstants {
     public static final long JWT_EXPIRATION = 7000000;
-    public static final String JWT_SECRET = usingRandomUUID().replaceAll("-","R");
+    public static final String JWT_SECRET = usingRandomUUID();
 
     static String usingRandomUUID() {
         SecureRandom random = new SecureRandom();
@@ -15,8 +15,8 @@ public class SecurityConstants {
         random.nextBytes(bytes);
         var encoder = Base64.getUrlEncoder().withoutPadding();
          String secret= encoder.encodeToString(bytes);
-         secret.replaceAll("_","d");
-         return secret;
+        secret = secret.replaceAll("[\\-_]", "");
+        return secret;
     }
 
 }

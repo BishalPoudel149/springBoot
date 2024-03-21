@@ -21,4 +21,9 @@ public interface DepartmentService {
     public void deleteDepartmentService(Long id);
 
     public Department updateDepartment(Long id, Department department);
+
+    public String getHodName(String department);
+
+    public String getHodJDBC(String department);
+
 }

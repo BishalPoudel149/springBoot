@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("api/services")
 public class DepartmentController {
 
     @Autowired
@@ -55,6 +56,12 @@ public class DepartmentController {
     @PutMapping("/department/update/{id}")
     public Department updateDepartment(@PathVariable("id") Long id, @RequestBody Department department){
         return departmentService.updateDepartment(id,department);
+    }
+
+    @GetMapping("/department/hod")
+    public String getHod(@RequestParam String department){
+       // return departmentService.getHodName(department);
+        return departmentService.getHodJDBC(department);
     }
 
 }
