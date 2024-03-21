@@ -2,6 +2,7 @@ package com.jcCoder.springboottut.service;
 
 import com.jcCoder.springboottut.entity.Department;
 import com.jcCoder.springboottut.error.DepartmentNotFoundException;
+import com.jcCoder.springboottut.kafka.constant.KafkaConstant;
 import com.jcCoder.springboottut.repository.DepartmentRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.ParameterMode;
@@ -30,7 +31,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
     @Autowired
-    private KafkaTemplate<String,Object>kafkaTemplate;
+    private KafkaTemplate<String,Department>kafkaTemplate;
 
     @Override
     public Department saveDepartment(Department department) {
@@ -90,6 +91,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
 
         Department updatedDepartment= departmentRepository.save(depart);
+        kafkaTemplate.send(KafkaConstant.DEPARTMENT_DETAILS,updatedDepartment);
 
         return updatedDepartment;
     }
